@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Data Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">📊 Upload Sales Data (CSV or Excel)</h2>
+
+        <div class="card p-4 shadow">
+            <form action="/" method="POST" enctype="multipart/form-data" class="text-center">
+                <input type="file" name="file" class="form-control mb-3" required>
+                <button type="submit" class="btn btn-primary">📤 Upload</button>
+            </form>
+        </div>
+
+        {% if stats %}
+        <div class="mt-4 p-4 bg-white shadow rounded">
+            <h3 class="text-center">📄 Summary Statistics for {{ filename }}</h3>
+            <div class="table-responsive">
+                {{ stats | safe }}
+            </div>
+            <div class="text-center mt-3"></div>
+                <button id="saveDataBtn" class="btn btn-success">💾 Save Data</button>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if plot_url %}
+        <div class="mt-4 p-4 bg-white shadow rounded text-center">
+            <h3>📈 Sales Trend</h3>
+            <img src="{{ plot_url }}" class="img-fluid rounded shadow" alt="Sales Trend Graph">
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('saveDataBtn')?.addEventListener('click', function () {
+            const data = `Summary Statistics for {{ filename }}\n\n{{ stats | safe }}`;
+            const blob = new Blob([data], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'sales_data_summary.txt';
+            link.click();
+        });
+    </script>
+</body>
+</html>
