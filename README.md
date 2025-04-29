@@ -1,16 +1,16 @@
 # 📊 Sales Analysis Web App
 
-This is a web-based data analysis project built using **Flask** (or Django), designed to let users upload sales data files (CSV/Excel), analyze them, and visualize results through a simple dashboard interface.
+This is a web-based data analysis project built using **Flask**, designed to let users upload sales data files (CSV/Excel), analyze them, and visualize results through a clean dashboard interface.
 
 ---
 
 ## 🚀 Features
 
 - Upload `.csv` or `.xlsx` sales files
-- Data cleaning and summary statistics
+- Automatic data cleaning and summary statistics
 - Line graphs and visualizations
-- Organized file management with upload history
-- Web-based UI using HTML templates and static files
+- Organized upload management
+- Interactive web-based UI with HTML templates and static assets
 
 ---
 
@@ -18,12 +18,14 @@ This is a web-based data analysis project built using **Flask** (or Django), des
 
 ```
 sales_analysis_project/
-├── app/              # Core backend (routes, logic)
+├── app/              # Core backend logic (routes, Flask app) 
 ├── static/           # CSS, JS, images
 ├── templates/        # HTML pages
 ├── uploads/          # Uploaded files
 ├── requirements.txt  # Python packages
-└── manage.py         # App runner (Flask or Django)
+├── README.md # Project overview
+└── app.py # App entry point (use this to run the server)
+
 ```
 
 ---
@@ -31,15 +33,15 @@ sales_analysis_project/
 ## ⚙️ How to Run It Locally
 
 ```bash
-# Step 1: Create virtual environment
+# Step 1: Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+source venv/bin/activate     # On Windows: venv\Scripts\activate
 
 # Step 2: Install dependencies
 pip install -r requirements.txt
 
 # Step 3: Run the app
-python manage.py runserver  # Or: flask run
+python app.py
 ```
 
 ---
@@ -51,6 +53,14 @@ Install all Python dependencies using:
 ```
 pip install -r requirements.txt
 ```
+
+Libraries used:
+- `Flask`
+- `pandas`
+- `matplotlib`
+- `openpyxl`
+- `seaborn`
+
 
 ---
 
@@ -71,6 +81,8 @@ From Uganda | Passionate about analytics, dashboards & storytelling with data
 
 ---
 
-## 🌐 Connect
+## 🌐 Connect with Me
+https://www.linkedin.com/in/mubarak-ssesimba-43b139248/
+https://github.com/Mubs24
 
-Feel free to fork the repo, try it out, or connect with me on GitHub!
+Feel free to fork the repo, try it out, or message me if you want to collaborate!
