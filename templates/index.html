@@ -61,7 +61,7 @@
                                 <i class="bi bi-magic me-2"></i> Analyze Data
                             </button>
                         </form>
-                        <div class="mt-3 text-muted small">Need data? <a href="/static/sample.csv" download>Download
+                        <div class="mt-3 text-muted small">Need data? <a href="/download_sample" download>Download
                                 sample.csv</a></div>
                     </div>
                 </div>
@@ -199,15 +199,23 @@
                             {{ data_sample | safe }}
                         </div>
 
-                        <div class="mt-auto d-flex gap-3 pt-3 border-top">
+                        <div class="mt-auto d-flex flex-wrap gap-2 pt-3 border-top">
                             <a href="data:text/csv;base64,{{ csv_b64 }}" download="cleaned_sales_data.csv"
                                 class="btn btn-outline-success flex-grow-1">
-                                <i class="bi bi-filetype-csv me-2"></i>Download Validated CSV
+                                <i class="bi bi-filetype-csv me-2"></i> CSV Validated
                             </a>
                             <a href="data:application/pdf;base64,{{ pdf_b64 }}" download="sales_report.pdf"
                                 class="btn btn-danger flex-grow-1 text-white">
-                                <i class="bi bi-filetype-pdf me-2"></i>Download PDF Report
+                                <i class="bi bi-filetype-pdf me-2"></i> PDF Report
                             </a>
+                            <form action="/export" method="POST" class="flex-grow-1 d-flex">
+                                <input type="hidden" name="summary_txt" value="{{ stats_txt }}">
+                                <input type="hidden" name="total_revenue" value="{{ total_revenue }}">
+                                <input type="hidden" name="num_records" value="{{ num_records }}">
+                                <button type="submit" class="btn btn-secondary w-100">
+                                    <i class="bi bi-file-text me-2"></i> .TXT Summary
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
