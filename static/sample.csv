@@ -1,0 +1,21 @@
+Date,Sales,Product,Region
+2024-01-01,150.50,Widget A,North
+2024-01-02,200.00,Widget B,South
+2024-01-03,120.75,Widget A,North
+2024-01-04,310.20,Widget C,East
+2024-01-05,250.00,Widget B,West
+2024-02-01,180.50,Widget A,North
+2024-02-05,210.00,Widget B,South
+2024-02-10,400.00,Widget C,East
+2024-03-01,300.00,Widget A,North
+2024-03-15,150.00,Widget B,West
+2024-03-20,280.50,Widget C,South
+2024-04-02,320.00,Widget A,East
+2024-04-10,190.00,Widget B,North
+2024-04-15,450.25,Widget C,West
+2024-05-01,500.00,Widget A,South
+2024-05-12,220.75,Widget B,East
+2024-05-20,380.00,Widget C,North
+2024-06-05,410.50,Widget A,West
+2024-06-15,270.00,Widget B,South
+2024-06-25,310.25,Widget C,East

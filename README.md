@@ -1,21 +1,18 @@
-# 📊 Sales Analysis App
+# 📊 Sales Analyst Pro
 
-A lightweight, robust, secure, and intuitive Flask web application for uploading and analyzing sales data. 
+An analyst-grade, lightweight, and professional Flask web application for uploading and analyzing sales data. 
 
-This app allows you to upload **Excel (`.xlsx`, `.xls`)** or **CSV** files containing your sales transactions and instantly generates detailed statistical summaries and an interactive line chart.
+This app allows you to upload **Excel (`.xlsx`, `.xls`)** or **CSV** files containing your sales transactions and instantly generates an interactive dashboard with Key Performance Indicators (KPIs), performance breakdowns, and dynamic line charts.
 
 ## ✨ Features
 
-- **Upload Flexibility:** Supports multiple file extensions (CSV, XLSX, XLS).
-- **Fast In-Memory Processing:** Uses the `io.BytesIO` module to read, analyze, and render charts without ever writing temporary files to your hard drive. 
-- **Production-Ready Thread Safety:** Uses `matplotlib.use('Agg')` and Object-Oriented APIs to ensure multiple users can analyze files concurrently without overlapping or crashing.
-- **Robust Error Handling:** Checks for valid file types and data structures. If a file is missing the `Date` or `Sales` columns, an error message is safely fed back directly to the Web UI instead of crashing the server.
-- **Dynamic Chart Timeframes:** Intelligently scales X-axis dates depending on if the data represents days, months, or years.
-- **Export Data:** Securely export generated statistics from the dashboard context as `.txt`.
+- **Professional KPI Dashboard:** Automatically calculates Total Sales, Average Daily Sales, Best Month, and Month-over-Month Growth.
+- **Data Breakdowns:** Automatically calculates and displays top-selling Products and highest-grossing Regions if columns are present.
+- **Export Reports:** Download an auto-generated, ready-to-print **PDF Summary Report** or a cleansed and validated **CSV file** directly from the dashboard!
+- **Fast & Secure In-Memory Processing:** Uses advanced BytesIO streams to read, analyze, and render charts or generate PDF reports without ever writing temporary files to your hard drive. 
+- **Production-Ready Thread Safety:** Uses `matplotlib.use('Agg')` and modularized Object-Oriented APIs to ensure concurrency.
 
-## 🚀 Quick Start
-
-Ensure you have Python 3 installed.
+## 🚀 How to Run (Exact Commands)
 
 1. **Clone the repository:**
    ```bash
@@ -23,27 +20,40 @@ Ensure you have Python 3 installed.
    cd sales-analysis-app
    ```
 
-2. **Install the dependencies:**
+2. **Create a virtual environment (Recommended):**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+
+3. **Install the exact pinned dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run the Application:**
+4. **Run the Application:**
    ```bash
    python app.py
    ```
 
-4. **Open your browser:** Navigate to `http://127.0.0.1:5000` to interact with the app.
+5. **Open your browser:** Navigate to `http://127.0.0.1:5000` to interact with the app.
 
 ## 📁 Required Data Format
 For the app to successfully generate a chart, your CSV or Excel file **must** contain the following exact column names (case-sensitive):
 - `Date` (e.g., "2024-01-01")
 - `Sales` (e.g., 1500 or 1500.50)
 
-Any empty rows or malformed dates/sales entries will be safely dropped during processing.
+*Optional but recommended columns for breakdowns:*
+- `Product` (e.g., "Widget A")
+- `Region` (e.g., "North")
 
-## 🛠 Tech Stack
-- **Backend:** Python, Flask, Werkzeug
-- **Data processing:** Pandas
-- **Visualization:** Matplotlib, Seaborn
-- **Frontend Design:** Vanilla HTML, Bootstrap 5
+> **Don't have a dataset?** You can download a perfectly formatted test file directly from the app's homepage (`sample.csv`).
+
+## 🛠 Project Structure
+To maintain professional code quality, the application logic is split into dedicated modules:
+
+- `app.py`: The Flask wiring and routing controller.
+- `data_processing.py`: Handles all data cleaning, validation, and KPI/breakdown calculations.
+- `plotting.py`: Generates the Matplotlib and Seaborn visualization charts.
+- `pdf_generator.py`: Generates the downloadable PDF summary reports using FPDF2.
+- `requirements.txt`: Strictly pinned package versions for perfect reproducibility.
