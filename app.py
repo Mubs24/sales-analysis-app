@@ -4,10 +4,14 @@ import base64
 from flask import Flask, render_template, request, Response
 from werkzeug.utils import secure_filename
 
-from data_processing import process_data, calculate_kpis, generate_breakdowns, get_csv_b64
+from data_processing import (
+    process_data,
+    calculate_kpis,
+    generate_breakdowns,
+    get_csv_b64,
+)
 from plotting import generate_trend_plot
 from pdf_generator import generate_pdf_b64
-
 
 app = Flask(__name__)
 
@@ -95,7 +99,7 @@ def download_sample():
     buffer = BytesIO()
     buffer.write(sample_csv.encode("utf-8"))
     buffer.seek(0)
-    
+
     return Response(
         buffer,
         mimetype="text/csv",
