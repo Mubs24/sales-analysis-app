@@ -1,88 +1,49 @@
-# 📊 Sales Analysis Web App
+# 📊 Sales Analysis App
 
-This is a web-based data analysis project built using **Flask**, designed to let users upload sales data files (CSV/Excel), analyze them, and visualize results through a clean dashboard interface.
+A lightweight, robust, secure, and intuitive Flask web application for uploading and analyzing sales data. 
 
----
+This app allows you to upload **Excel (`.xlsx`, `.xls`)** or **CSV** files containing your sales transactions and instantly generates detailed statistical summaries and an interactive line chart.
 
-## 🚀 Features
+## ✨ Features
 
-- Upload `.csv` or `.xlsx` sales files
-- Automatic data cleaning and summary statistics
-- Line graphs and visualizations
-- Organized upload management
-- Interactive web-based UI with HTML templates and static assets
+- **Upload Flexibility:** Supports multiple file extensions (CSV, XLSX, XLS).
+- **Fast In-Memory Processing:** Uses the `io.BytesIO` module to read, analyze, and render charts without ever writing temporary files to your hard drive. 
+- **Production-Ready Thread Safety:** Uses `matplotlib.use('Agg')` and Object-Oriented APIs to ensure multiple users can analyze files concurrently without overlapping or crashing.
+- **Robust Error Handling:** Checks for valid file types and data structures. If a file is missing the `Date` or `Sales` columns, an error message is safely fed back directly to the Web UI instead of crashing the server.
+- **Dynamic Chart Timeframes:** Intelligently scales X-axis dates depending on if the data represents days, months, or years.
+- **Export Data:** Securely export generated statistics from the dashboard context as `.txt`.
 
----
+## 🚀 Quick Start
 
-## 🧱 Project Structure
+Ensure you have Python 3 installed.
 
-```
-sales_analysis_project/
-├── app/              # Core backend logic (routes, Flask app) 
-├── static/           # CSS, JS, images
-├── templates/        # HTML pages
-├── uploads/          # Uploaded files
-├── requirements.txt  # Python packages
-├── README.md # Project overview
-└── app.py # App entry point (use this to run the server)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mubs24/sales-analysis-app.git
+   cd sales-analysis-app
+   ```
 
-```
+2. **Install the dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
+3. **Run the Application:**
+   ```bash
+   python app.py
+   ```
 
-## ⚙️ How to Run It Locally
+4. **Open your browser:** Navigate to `http://127.0.0.1:5000` to interact with the app.
 
-```bash
-# Step 1: Create a virtual environment
-python -m venv venv
-source venv/bin/activate     # On Windows: venv\Scripts\activate
+## 📁 Required Data Format
+For the app to successfully generate a chart, your CSV or Excel file **must** contain the following exact column names (case-sensitive):
+- `Date` (e.g., "2024-01-01")
+- `Sales` (e.g., 1500 or 1500.50)
 
-# Step 2: Install dependencies
-pip install -r requirements.txt
+Any empty rows or malformed dates/sales entries will be safely dropped during processing.
 
-# Step 3: Run the app
-python app.py
-```
-
----
-
-## 📦 Requirements
-
-Install all Python dependencies using:
-
-```
-pip install -r requirements.txt
-```
-
-Libraries used:
-- `Flask`
-- `pandas`
-- `matplotlib`
-- `openpyxl`
-- `seaborn`
-
-
----
-
-## 📁 Sample Data
-
-Include:
-- `data.csv`
-- `cleanedData.csv`
-- `pokemon_data.csv`
-- `pokemon_data.xlsx`
-
----
-
-## 👨‍💻 Author
-
-Mubarak Sessimba — aspiring data scientist  
-From Uganda | Passionate about analytics, dashboards & storytelling with data
-
----
-
-## 🌐 Connect with Me
-https://www.linkedin.com/in/mubarak-ssesimba-43b139248/
-https://github.com/Mubs24
-
-Feel free to fork the repo, try it out, or message me if you want to collaborate!
+## 🛠 Tech Stack
+- **Backend:** Python, Flask, Werkzeug
+- **Data processing:** Pandas
+- **Visualization:** Matplotlib, Seaborn
+- **Frontend Design:** Vanilla HTML, Bootstrap 5
